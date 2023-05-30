@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&Inter:wght@300;400;500;600;700;800&display=swap");
+
+$modal-content-border-radius: 8px;
+$modal-content-border-color: white;
+$modal-transition: transform 0.2s ease-out;
+$modal-header-border-color: white;
+$modal-header-padding: 24px;
+
+$btn-border-radius: 99px;
+
+$input-border-radius: 6px;
+$input-focus-box-shadow: none;
+
+$font-family-sans-serif: "Poppins", sans-serif;
+// $font-family-sans-serif: "Inter", sans-serif;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

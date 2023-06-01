@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%function formatDate(dateString) {
+      const date = new Date(dateString);
+    
+      const options = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        timeZone: "Asia/Kolkata",
+      };
+    
+      return date.toLocaleDateString("en-IN", options);
+    }
+    %>
+    
+    <section>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div >
+            <h2 class="fw-bold">Callback Requests</h2>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%for(let i=0; i<admincallbacks.length; i++){ %>
+                
+              <tr>
+                <th scope="row"><%=i+1%></th>
+                <td><%= formatDate(admincallbacks[i].date)%></td>
+                <td><%= admincallbacks[i].name%>
+                  <%if(admincallbacks[i].status == 0){%>
+                    <p class="tag success">New Lead</p>
+                    <%} else{%>
+                    <p class="tag disabled ">Resolved</p>
+                    <%}%>
+                </td>
+                <td><%= admincallbacks[i].email%></td>
+                <td><%= admincallbacks[i].phone%></td>
+                <td>
+<form action="/updatecallbacks" method="post">
+  <input type="hidden" name="id" value="<%= admincallbacks[i]._id%>">
+  <button class="btn btn-primary">Update</button>
+</form>
+
+                </td>
+              </tr>
+              <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

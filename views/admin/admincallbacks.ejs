@@ -13,9 +13,9 @@
       const date = new Date(dateString);
     
       const options = {
+        day: "2-digit",
+        month: "short",
         year: "numeric",
-        month: "numeric",
-        day: "numeric",
         timeZone: "Asia/Kolkata",
       };
     
@@ -29,8 +29,8 @@
           <div >
             <h2 class="fw-bold">Callback Requests</h2>
           </div>
-
-          <table class="table">
+          <div class="table-container mt-3">
+            <table class="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -47,26 +47,32 @@
               <tr>
                 <th scope="row"><%=i+1%></th>
                 <td><%= formatDate(admincallbacks[i].date)%></td>
-                <td><%= admincallbacks[i].name%>
-                  <%if(admincallbacks[i].status == 0){%>
-                    <p class="tag success">New Lead</p>
-                    <%} else{%>
-                    <p class="tag disabled ">Resolved</p>
-                    <%}%>
+                <td>
+                  <%= admincallbacks[i].name %>
+                  <% if (admincallbacks[i].status == 0) { %>
+                    <p class="tag info">New Lead</p>
+                  <% } else if (admincallbacks[i].status == 1) { %>
+                    <p class="tag success">Paid</p>
+                  <% } else if (admincallbacks[i].status == 2) { %>
+                    <p class="tag warning">Not Interested</p>
+                  <% } else if (admincallbacks[i].status == 3) { %>
+                    <p class="tag alert">Follow Up</p>
+                  <% }%> 
                 </td>
+                
                 <td><%= admincallbacks[i].email%></td>
                 <td><%= admincallbacks[i].phone%></td>
                 <td>
-<form action="/updatecallbacks" method="post">
-  <input type="hidden" name="id" value="<%= admincallbacks[i]._id%>">
-  <button class="btn btn-primary">Update</button>
-</form>
-
+                  <form action="/updatecallbacks" method="post">
+                    <input type="hidden" name="id" value="<%= admincallbacks[i]._id%>">
+                    <button class="btn btn-outline-primary">Update</button>
+                  </form>
                 </td>
               </tr>
               <%}%>
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </section>

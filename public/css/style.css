@@ -2,24 +2,37 @@
   display: inline-block;
   padding: 2px 12px;
   border-radius: 6px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 13px;
   margin-left: 8px;
 }
 .info {
-  border: 1px solid #8ab0e8;
-  background-color: #ebf3fe;
+  background-color: #e5f0ff;
   color: #0d6efd;
 }
 
 .success {
-  border: 1px solid #84c6a7;
-  background-color: #f1fdf7;
+  background-color: #e4fff2;
   color: #198754;
 }
 
 .disabled {
-  border: 1px solid #dadada;
   background-color: #f2f2f2;
   color: #949494;
+}
+
+.warning {
+  background-color: #ffeef0;
+  color: #dc3545;
+}
+
+.alert {
+  background-color: #fff6e2;
+  color: #da7f00;
+}
+
+.table-container {
+  border: 1px solid lightgray;
+  border-radius: 16px;
+  padding-top: 16px;
 }
